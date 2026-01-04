@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net9.0;net9.0-browser</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <RootNamespace>RedOwl</RootNamespace>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Title>RedOwl.Log</Title>
+        <Version>0.0.0-devbuild</Version>
+        <Description>Opinionated logging implementations for C# applications and libraries.</Description>
+        <Copyright>© 2025 Red Owl Games</Copyright>
+        <Authors>Red Owl</Authors>
+        <Company>Red Owl</Company>
+        
+        <PackageId>RedOwl.Log</PackageId>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageTags>logging;log;logger;loggers;redowl;util;utils</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageProjectUrl></PackageProjectUrl>
+
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/red-owl-games/Log</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="./README.md" Pack="true" PackagePath="\" />
+        <None Include="./LICENSE" Pack="true" PackagePath="\" />
+        <None Include="./icon.png" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+</Project>
