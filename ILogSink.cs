@@ -1,11 +1,11 @@
 namespace RedOwl;
 
-internal interface ILogSink
+public interface ILogSink
 {
     public void Write(LogEntry entry);
 }
 
-internal struct LogEntry
+public struct LogEntry
 {
     public LogLevel Level;
     public int LineNumber;

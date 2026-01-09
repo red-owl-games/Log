@@ -8,6 +8,10 @@ internal class FileSink : ILogSink, IDisposable
     
     public FileSink(string filepath, bool append = false)
     {
+        var dir = Path.GetDirectoryName(filepath);
+        if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir)) 
+            Directory.CreateDirectory(dir);
+        
         _stream = new FileStream(
             filepath,
             append ? FileMode.Append : FileMode.Create,

@@ -5,7 +5,7 @@ namespace RedOwl;
 public interface ILogger
 {
     LogLevel Level { get; set; }
-    void AddFileSink(string filepath, bool append = false);
+    void AddSink(ILogSink sink);
     void Print(string message, [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0);
     void Trace(string message, [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0);
     void Debug(string message, [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0);
@@ -13,8 +13,6 @@ public interface ILogger
     void Warn(string message, [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0);
     void Error(string message, [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0);
 }
-
-
 
 public class Logger : ILogger
 {
@@ -26,17 +24,9 @@ public class Logger : ILogger
     {
         _sinks.Add(new ConsoleSink());
     }
-    
-    public void AddFileSink(string filepath, bool append = false)
-    {
-        var dir = Path.GetDirectoryName(filepath);
-        if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
-        {
-            Directory.CreateDirectory(dir);
-        }
-        _sinks.Add(new FileSink(filepath, append));
-    }
-    
+
+    public void AddSink(ILogSink sink) => _sinks.Add(sink);
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void Print(string message, [CallerFilePath] string filePath = "", [CallerLineNumber] int lineNumber = 0) 
         => Write(LogLevel.None, message, filePath, lineNumber);
