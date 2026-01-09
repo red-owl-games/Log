@@ -32,6 +32,8 @@ internal partial class ConsoleSink : ILogSink
             }
         } catch {}
     }
+
+    public void Dispose() {}
 }
 #else
 internal class ConsoleSink : ILogSink
@@ -65,5 +67,7 @@ internal class ConsoleSink : ILogSink
             }
         }
     }
+
+    public void Dispose() {}
 }
 #endif

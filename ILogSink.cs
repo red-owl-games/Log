@@ -1,6 +1,6 @@
 namespace RedOwl;
 
-public interface ILogSink
+public interface ILogSink : IDisposable
 {
     public void Write(LogEntry entry);
 }

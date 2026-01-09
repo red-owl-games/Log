@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 
 namespace RedOwl;
 
-public interface ILogger
+public interface ILogger : IDisposable
 {
     LogLevel Level { get; set; }
     void AddSink(ILogSink sink);
@@ -58,5 +58,10 @@ public class Logger : ILogger
             Time = DateTime.Now,
         };
         foreach (var sink in _sinks) sink.Write(entry);
+    }
+
+    public void Dispose()
+    {
+        foreach (var sink in _sinks) sink.Dispose();
     }
 }

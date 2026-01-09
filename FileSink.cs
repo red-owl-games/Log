@@ -1,6 +1,6 @@
 namespace RedOwl;
 
-internal class FileSink : ILogSink, IDisposable
+public class FileSink : ILogSink
 {
     private static readonly Lock Lock = new();
     private readonly FileStream _stream;
